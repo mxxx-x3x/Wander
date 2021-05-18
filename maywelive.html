@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" conetent="width-device-width, initial-scale=1, user-scalable=no">
+	<title>Wander</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+
+
+ <style>
+ 	html{
+        width: 100%; height: 100%;
+    }
+ 	body{
+      position: fixed; 
+      width: 100%;
+      }
+
+	@keyframes nya {
+	from {margin-left: -300%; transform:translateY(0);}
+    to {margin-left: 1200%;transform:translateY(-510px) }
+	}
+
+   .draggable {height: 100%}
+   .draggablebox {z-index: 50; position: relative; margin:3% 10% 20% 30%; width: 900px; height:auto;}
+   .draggablebox img {width: 100%;}
+   .stairs {z-index: 52; position: absolute; top:45% ; left: -2%; width: 500px;} 
+   .stairs img {width: 100%;}
+   .stairs2 {z-index: 54; position: absolute;top: -2%; right: 5%; width: 200px; height:auto;} 
+   .stairs2 img {width: 100%;}
+   .dolphin {z-index: 53; position: absolute; top: 43%; right: 13%; width: 520px; height:auto;}
+   .dolphin img {width: 100%;}
+   .space {z-index: 49; position: absolute; top: 65%; right: 7%; width: 600px;}
+   .space img {width: 100%;}
+   .hover img:last-child{display:none}
+   .hover:hover img:first-child{display:none}
+   .hover:hover img:last-child{display:inline-block;}
+   .button1 {z-index: 51; position: absolute; width:60px; height: 40px; top: 5%; left: 5%; border: 5px solid black; background-color:white; text-align: center;}
+   .background {z-index: 0; position: fixed;top: 0px; left: 0px; width: 100vw; height: 100vh; overflow: hidden;}
+   .background img {object-fit: cover; width: 100%; height: 100%;}
+   .rainbow {z-index: 1; position: fixed; top: 5%; left: 0px; width: 100vw; overflow: hidden;}
+   .rainbow img {width: 100%;}
+   .folder1 {z-index: 54; position: absolute;top: 8%; left: 5%; width:220px;} 
+   .folder1 img {width: 100%;}
+   .folder2 {z-index: 54; position: absolute;top: 8%; left: 19%; width:220px;} 
+   .folder2 img {width: 100%;}
+   .nyan {z-index: 3;position: absolute;top: 33%; left: -30%; width:270px}
+   .nyan img {width:100%;}
+   .nyan2 {animation-name: nya; animation-duration: 21s;animation-iteration-count:infinite;transition-timing-function: linear;}
+   .nyan3 {animation-name: nya; animation-delay: 7s; animation-duration: 21s;animation-iteration-count:infinite;transition-timing-function: linear;}
+   .nyan4 {animation-name: nya; animation-delay: 14s; animation-duration: 21s;animation-iteration-count:infinite;transition-timing-function: linear;}
+   .cursor {z-index: 55;position: absolute; top: 60%; left: 33%;width: 150px;}
+   .cursor img {width: 100%;}
+   .rotate {height:100%;}
+   .rotate:hover {transform: rotate(30deg);}
+   .face1 {z-index: 49; position: absolute; top: 40%; right: -2%; width: 330px; height:auto;}
+   .face1 img {width:100%;}
+   .face3 {z-index: 48; position: absolute; top: 50%; right: -2%; width: 330px; height:auto;}
+   .face3 img {width:100%;}
+
+
+   @media all and (max-width: 768px){
+
+   .draggable {height: 100%}
+   .draggablebox {z-index: 50; position: relative; top:5%; right:14%; width: 400px; height:auto;}
+   .draggablebox img {width: 100%;}
+   .stairs {z-index: 52; position: absolute; top:100% ; left: -2%; width: 200px;} 
+   .stairs img {width: 100%;}
+   .stairs2 {z-index: 54; position: absolute;top: -2%; right: 5%; width: 80px; height:auto;} 
+   .stairs2 img {width: 100%;}
+   .dolphin {z-index: 53; position: absolute; top: 60%; right: 13%; width: 200px; height:auto;}
+   .dolphin img {width: 100%;}
+   .space {z-index: 49; position: absolute; top: 85%; right: 7%; width: 250px;}
+   .space img {width: 100%;}
+   .hover img:last-child{display:none}
+   .hover:hover img:first-child{display:none}
+   .hover:hover img:last-child{display:inline-block;}
+   .button1 {z-index: 51; position: absolute; width:50px; height: 30px; top: 5%; left: 5%; border: 5px solid black; background-color:white; text-align: center; font-size: 5px}
+   .background {z-index: 0; position: fixed;top: 0px; left: 0px; width: 100vw; height: 100vh; overflow: hidden;}
+   .background img {object-fit: cover; width: 100%; height: 100%;}
+   .rainbow {z-index: 1; position: fixed;top: 18%; left: 0px; width: 100vw; overflow: hidden;}
+   .rainbow img {width: 100%;}
+   .folder1 {z-index: 54; position: absolute;top: 8%; left: 1%; width:100px;} 
+   .folder1 img {width: 100%;}
+   .folder2 {z-index: 54; position: absolute;top: 8%; left: 20%; width:100px;} 
+   .folder2 img {width: 100%;}
+   .nyan {z-index: 3;position: absolute;top: 50%; left: -30%; width:120px}
+   .nyan img {width:100%;}
+   .nyan2 {animation-name: nya; animation-duration: 21s;animation-iteration-count:infinite;transition-timing-function: linear;}
+   .nyan3 {animation-name: nya; animation-delay: 7s; animation-duration: 21s;animation-iteration-count:infinite;transition-timing-function: linear;}
+   .nyan4 {animation-name: nya; animation-delay: 14s; animation-duration: 21s;animation-iteration-count:infinite;transition-timing-function: linear;}
+   .cursor {z-index: 55;position: absolute; top: 90%; left: 30%;width: 70px;}
+   .cursor img {width: 100%;}
+   .rotate {height:100%;}
+   .rotate:hover {transform: rotate(30deg);}
+   .face1 {z-index: 49; position: absolute; top: 100%; right: -2%; width: 150px; height:auto;}
+   .face1 img {width:100%;}
+   .face3 {z-index: 48; position: absolute; top: 120%; right: -2%; width: 150px; height:auto;}
+   .face3 img {width:100%;}
+
+    @keyframes nya {
+  from {margin-left: -300%; transform:translateY(0);}
+    to {margin-left: 1200%;transform:translateY(-170px) }
+  }
+
+
+   }
+
+ </style>
+
+ <script src="https://code.jquery.com/jquery-1.12.4.js">
+ </script>
+
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
+ </script>
+
+   <script>
+  $( function() {
+    $( ".draggable" ).draggable();
+  } );
+  </script>
+
+ <script type="text/javascript">
+  function play1(){
+    var audio = document.getElementById("audio1");
+    audio.play();
+  }
+ </script>
+
+</head>
+
+
+<body>
+
+<div class="background">
+	<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fsx8s8%2Fbtq21oRKG98%2FcRb2BYeYpwbCpmbGtcw1d1%2Fimg.png">
+</div>
+
+<div class="rainbow">
+	<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb044S6%2Fbtq2SM7iUSk%2F6DP809mHli4PRzajkKZ2bk%2Fimg.png">
+</div>
+
+ <div class="draggablebox draggable">
+   <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpSdwR%2Fbtq2y3tdTI9%2FwPOLNBMmfLyHeN1yf5Hog1%2Fimg.png">
+   	 <button class="button1" style="cursor:pointer" onclick="sample();"><strong>찰칵!</strong></button>
+	 </div>
+ </div>
+
+<div class="stairs draggable">
+ 	 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcLBjLF%2Fbtq21NqkPXp%2FRnBE6ksJzMAI0Fj7xNqHqk%2Fimg.png">
+</div>
+
+<div class="stairs2 draggable">
+ 	 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fba1XqR%2Fbtq2N0rIfk0%2FkMpHmZHArzai42gx4rmTb0%2Fimg.png">
+</div>
+
+<div class="dolphin draggable">
+ 	 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0Pk4h%2Fbtq2Tcryb65%2FAKPAKr5QUQRmjmkWo8zyC0%2Fimg.png">
+</div>
+
+<div class="cursor">
+ 	 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbdRekw%2Fbtq2XbFYxsY%2FbT09m85H5bSmDx0IdxoCd0%2Fimg.png" class="rotate" style="cursor:pointer" onclick="play1()">
+   <audio id="audio1" src="Cartoon Boing.mp3"></audio>
+</div>
+
+<div class="face1 draggable">
+ 	 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbX0aTC%2Fbtq21nZXtNZ%2FQMcJrB1L4X1TK7QNjOHyEk%2Fimg.png">
+</div>
+
+<div class="face3 draggable">
+ 	 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcKSIJH%2Fbtq23sMXoJd%2FrarfwspfxnDW8w1cIG0wwK%2Fimg.png">
+</div>
+
+<div class="space hover">
+	<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbZqfoo%2Fbtq2ryPwvUk%2FExhq55qFe3eC0tbmE9UKMK%2Fimg.png">
+	<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FWGPRv%2Fbtq2qwYM4FJ%2FltfkPtN32Oglv17PCxDy7k%2Fimg.png">
+</div>
+
+<div class="folder1">
+ 	 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdAxvUE%2Fbtq3ASkJi5a%2Fax1RxrqvUxoYzh64Ym6drk%2Fimg.png" class="img1">
+ 	 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcAoJQ5%2Fbtq3v8ClatH%2FQthWqPNOp2wo9ElNoU4GL0%2Fimg.png"class="img2">
+</div>
+
+<div class="folder2">
+ 	 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcAoJQ5%2Fbtq3v8ClatH%2FQthWqPNOp2wo9ElNoU4GL0%2Fimg.png"class="img3">
+ 	 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdAxvUE%2Fbtq3ASkJi5a%2Fax1RxrqvUxoYzh64Ym6drk%2Fimg.png" class="img4">
+</div>
+
+<div class="nyan">
+ 	 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbAsWHn%2Fbtq2RjRYjII%2FJhD33Qj2fomRv6iAqQH3Zk%2Fimg.png"class="nyan2">
+</div>
+
+<div class="nyan">
+ 	 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbGVkx0%2Fbtq21dC16Re%2FjwjQLIsrmMdc6GFR3k63bk%2Fimg.png" class="nyan3">
+</div>
+
+<div class="nyan">
+ 	 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbAsWHn%2Fbtq2RjRYjII%2FJhD33Qj2fomRv6iAqQH3Zk%2Fimg.png" class="nyan4">
+</div>
+
+<script>
+    $(document).ready(function(){
+            
+            $(".img1").show();
+            $(".img2").hide();
+            
+            $(".img1").click(function(){
+                $(".img1").hide();
+                $(".img2").show();
+            });
+            
+            $(".img2").click(function(){
+                $(".img1").show();
+                $(".img2").hide();
+            });
+        });
+</script>
+
+<script>
+    $(document).ready(function(){
+            
+            $(".img3").show();
+            $(".img4").hide();
+            
+            $(".img3").click(function(){
+                $(".img3").hide();
+                $(".img4").show();
+            });
+            
+            $(".img4").click(function(){
+                $(".img3").show();
+                $(".img4").hide();
+            });
+        });
+</script>
+
+
+<script type="text/javascript">
+    function sample() {
+            
+        html2canvas(document.body, {
+            useCORS: true, 
+            onrendered: function(canvas) {
+                canvas.toBlob(function(blob) {
+                    saveAs(blob, 'download.png');
+                });
+            
+            }
+        });
+    }
+</script>  
+
+
+</body>
+
+
+
+</html>
