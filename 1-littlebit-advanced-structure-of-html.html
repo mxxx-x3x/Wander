@@ -1,0 +1,184 @@
+<!-- 이것은 주석입니다. 문서에 등장하지 않습니다. 내용의 생김새에도 영향을 주지 않습니다. 코드 수정을 위해 에디터로 문서를 열 때, 혹은 웹 검사기를 실행해야 보입니다.-->
+
+<!-- HTML: Hyper Text Markup Language 
+마크업 언어(markup 언어, markup language)는 태그 등을 이용하여 문서나 데이터의 구조를 명기하는 언어의 한 가지이다.
+인디자인의 툴박스에서 버튼을 눌러 텍스트상자를 만들고 마우스 드래그를 통해 그 크기를 결정한다면, 
+HTML에는 텍스트 상자를 만드는 태그와 그 크기를 결정하는 태그가 있다. 눈에 보이는 모든 것은 마크업 언어로 환원되어 나열된다. 
+-->
+
+
+
+<!DOCTYPE html>
+<!-- 
+DTD 선언: 여러분이 작성하는 문서가 HTML임을 명시하고 있다. DTD란 문서 형식 정의(Document Type Definition)의 약어이다.
+-->
+
+<html>
+<!-- DTD 선언 바로 다음부터 실제 HTML 마크업을 적는다. -->
+  <head>
+    <!--
+    개미에게 머리와 가슴과 배가 있다면, HTML 문서에는 머리와 몸통이 있다. 각각 head, body 라고 부른다. 
+    '일반적으로는' body 요소에 실제 문서가 담기고, head 요소에는 언어양식, 검색을 위한 키워드, 제목, 스타일 시트 등 문서를 시각화시키기 위한 부분들이 들어간다. 
+    -->
+    <meta charset="utf-8">
+    <!-- meta 태그는 문서의 형태와 내용에 영향을 미치지 않는다. 그러나 인코딩, 키워드 등 문서 자체의 특성을 담고 있다. 특히 charset="utf-8" 요소가 없다면 한국어를 포함한 모든 유니코드 문자를 올바르게 출력할 수 없다. 내용이 한국어라면 반드시 <head> 맨 앞자리에 자리해야 한다. -->
+    <title>1. html 문서 관찰하기</title>
+    <!-- title은 말 그대로 문서의 제목 -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <!-- 외부 리소스 연결 / 어떤 리소스가 연결되었는지 확인해보자. --> <!-- 노토산스 글씨체 링크. -->
+
+      <style>
+      * {box-sizing: border-box;}
+      /* border-box를 content-box로 바꿔보세요. 모양이 어떻게 바뀌나요? */ /*박스가 옆으로 길어져서  꽉  찬다. */ 
+      html{
+        width: 100%; height: 100%; font-family: 'Noto Sans KR', sans-serif;
+      }
+      /* 숫자를 바꿔보세요. */ /*글씨의 비율이 바뀐다. */
+      body{
+        width: 100%; height: 100%; padding:100px 200px 100px 200px; margin:0 ; 
+        background: linear-gradient( 60deg, #FDF6DD, #EBF8C5, #B9F5EC, #FFCDFB, #FFCACC, #FFF4E0);
+        word-break: keep-all; font-size: 24px;
+       
+      }  
+      /* 숫자나 색상의 이름을 바꿔보세요. */
+      p {
+        font-size: 30px;
+        background-color: white;
+        padding:20px;
+      }
+      p:nth-of-type(2) {background: red;}
+      p:nth-of-type(odd) {background: orange;}
+      p:nth-of-type(3n) {background: #ff00ff;}
+
+      div {
+        font-size: 30px;
+        background-color: white;
+        padding:20px;
+      }
+      div:nth-of-type(2) {background: red;}
+      div:nth-of-type(odd) {background: orange;}
+      div:nth-of-type(3n) {background: #ff00ff;}
+
+      span {
+        font-size: 30px;
+        background-color: white;
+        padding:20px;
+      }
+      span:nth-of-type(2) {background: red;}
+      span:nth-of-type(odd) {background: green;}
+      span:nth-of-type(3n) {background: #ff00ff;}      
+
+      li {
+        font-size: 30px;
+        background-color: white;
+        padding:20px;
+      }
+      li:nth-of-type(2) {background: red;}
+      li:nth-of-type(odd) {background: orange;}
+      li:nth-of-type(3n) {background: #ff00ff;}  
+
+      /* div, p, span, li의 차이는 뭘까요? */ /* div은 줄간격 없이 줄바꿈하고, p는 줄간격이 있다. span은 줄바꿈이 없다. li는 점이나 숫자를 찍는데, ul일 경우 점이고 ol일 경우 숫자를 지정한다. */
+
+      .stylesample{font-size: 50px;}
+      #caption{font-size: 15px; width: 400px;}
+      
+      /* .와 #의 차이는 뭘까요? .은 스타일 하나만 지정하고 #은 스타일이 2개 이상 묶어서 그룹으로 지정된다. */
+
+      </style>
+
+    <!-- 스타일? 스타일! -->
+  </head>
+
+  <body>
+      <p class="stylesample">웹사이트</p> 
+      -웹사이트는 인터넷 프로토콜 기반의 네트워크에서 도메인 이름이나 IP 주소, 루트 경로만으로 이루어진 일반 URL을 통하여 보이는 웹 페이지들의 묶음이다. 대한민국에서 흔히 말하는 홈페이지는 엄밀히 말해 웹사이트를 지칭하고 있다.
+      <br><br><br>
+
+      <p>The first paragraph.</p>
+      <p>The second paragraph.</p>
+      <p>The third paragraph.</p>
+      <p>The fourth paragraph.</p>
+      <p>The fifth paragraph.</p>
+      <p>The sixth paragraph.</p>
+
+      <br><br><br>
+      <div class="stylesample">HTML</div>  HTML은 컨텐츠의 구조를 정의하는 마크업 언어이다. HTML은 컨텐츠의 서로 다른 부분들을 씌우거나 감싸서 다른 형식으로 보이게하거나 특정한 방식으로 동작하도록 하는 일련의 요소(elements)로 이루어져 있다.
+      <br><br><br>
+
+      <div>The first division.</div>
+      <div>The second division.</div>
+      <div>The third division.</div>
+      <div>The fourth division.</div>
+      <div>The fifth division.</div>
+      <div>The sixth division.</div>
+
+      <br><br><br>
+      <span class="stylesample">CSS</span>캐스케이딩 스타일 시트(Cascading Style Sheets, CSS)는 마크업 언어가 실제 표시되는 방법을 기술하는 언어다. 상위 요소(부모 요소)의 스타일이 하위 요소(자손, 자식 요소)로 상속되는 것이 특징인데 이것이 작은 폭포수가 여러겹으로 내려가는 형태를 닮았다고 해서 cascading 이라는 이름이 붙었다. 다양한 애니메이션 기능이 추가되어 최근엔 어도비 플래시를 어느 정도 대체하고 있다.
+      <br><br><br>
+      
+      <span>The first span.</span>
+      <span>The second span.</span>
+      <span>The third span.</span>
+      <span>The fourth span.</span>
+      <span>The fifth span.</span>
+      <span>The sixth span.</span>
+      
+      <br><br><br>
+      <ul>
+        <li class="stylesample">anchor</li>
+      </ul>
+      ‘닻(anchor)’을 뜻하는 &lt;a&gt; 태그는 태그 속 내용에 하이퍼링크(hyperlink)를 생성한다. 하이퍼링크의 기본 형태는 파란색과 밑줄이다. Hyper Text Markup Language 라는 이름을 보아도 알 수 있지만, 하이퍼링크는 HTML의 가장 근본적인 기능이다. &lt;a&gt; 태그는 웹을 웹답게, 웹을 웹으로 만든다.<br>
+      <a href="http://google.com">go GOOGLE</a>
+      <!-- href= Hypertext REFerence -->
+      <br><br><br>
+
+      <ul>
+        <li>The first Unordered Lists.</li>
+        <li>The second Unordered Lists.</li>
+        <li>The third Unordered Lists.</li>
+        <li>The fourth Unordered Lists.</li>
+        <li>The fifth Unordered Lists.</li>
+        <li>The sixth Unordered Lists.</li>
+      </ul>
+      
+      <br><br><br>
+      질문 1 <br>
+      이 문서의 서체는 어떻게 지정되었을까?<br>
+
+      <br><br><br>
+      질문 2 <br>
+      이 문서를 읽으면서 단어와 단어들 사이에 / 태그와 태그들 사이에 포착되는 질서들을 관찰한다. 그리고 어떤 질서가 있는지에 대해 자유롭게 기록해 보자. 마크업 랭귀지는 질서이고 규칙이고 약속이다. (다른 모든 언어가 그러하듯이.)<br>
+
+      <div id="caption">
+      문서를 읽을 때는 Sublime Text에서 마크업 언어와 함께 읽는다. 그리고 이 마크업 언어로 만들어진 문서가 어떤 형태를 만들어내는지는 chrome, safari, edge, firefox 등 인터넷 브라우저에서 확인한다.
+      </div>
+
+      <br><br><br>
+      질문 3-1 <br>
+      아래의 두 이미지를 문서 위에 불러오는 방식의 서로 다른 점에 대해 말해보자.<br>
+      <img src="cal.png" width="200px"><br>
+      <img src="https://www.folklore.org/images/Macintosh/calculator.gif" width="200px"><br>
+      <!-- img= IMaGe -->
+      <!-- src= SouRCe -->
+
+      <br><br><br>
+      질문 3-2 <br>
+      아래의 두 하이퍼링크의 서로 다른 점에 대해 말해보자. <br>
+      <a href="0-basic-structure-of-html.html">go Zero</a><br>
+      <a href="http://google.com">go GOOGLE</a><br>
+
+      <br><br><br>
+      질문 4 <br>
+      HTML 문법에서는 ‘꺾쇠 괄호’로도 부르는 부등호(< >)로 묶인 태그(tag)를 이용한다. 각 태그는 웹 브라우저에서 내용을 표시하는 방식을 비롯해 내용의 성격과 구조를 규정한다. 이 문서에 사용된 태그들을 크게 분류한다면 어떻게 나뉠지 생각해보자.<br>
+
+       <!-- 닫힘이 있는 태그와 없는 태그. 예를 들어 a나 div같은 태그들은 양쪽으로 단어를 묶어서 기능하지만 br은 단일 태그로만 존재한다. 또, 글씨의 형식을 바꾸는 태그와 이미지 태그, 링크 태그 등 기능에 따라서도 분류할 수 있다. -->
+
+      <br><br><br>
+      질문 5 <br>
+      각 태그에는 저마다 용도가 있고 내용의 성격에 따라 사용하기 적절한 태그가 각각 다르다. 그러나 모든 태그의 성질과 용도를 다 알기는 어렵다. 기술과 환경에 따라 언어 자체가 계속해서 변화하는데다, 단어가 더해지거나 혹은 폐기되기도 하기 때문이다. 2021년 현재 자주 이용되는 태그엔 무엇이 있는지 검색해보고, 마음에 드는 기능을 가지고 있거나 개인적 관심사를 반영하는 태그를 뽑아 1위부터 15위까지 순위를 매겨 목록을 만들어보자.<br>
+      <br><br><br>
+
+ <!--  <head> <body> <img> <link> <a> <li> <strong> <br> <caption> <button> <video> <input> <select> <p> <div> -->
+
+  </body>
+</html>
