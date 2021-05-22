@@ -12,9 +12,15 @@
 	body{height:100%; width:100%; padding:0; margin:0; line-height:150%;}
 
 	.background {z-index: -1; position: fixed;top: 0px; left: 0px; width: 100vw; height: 100vh; overflow: hidden}
-	.img1 {position:fixed; width:20vw; left:23%; top:15%;}
+	.img1 {position:fixed; width:28vw; left:20%; top:3%;}
 	.img1 img {width:100%;}
-	.text1 {position:fixed; width:20vw; right:23%; top:20%; color:white;}
+	.text1 {position:fixed; width:30vw; right:15%; top:20%; color:white;}
+
+	@media all and (max-width: 768px){
+		.img1 {position:absolute; width:70vw; left:10%; top:15%;}
+		.img1 img {width:100%;}
+		.text1 {position:absolute; width:70vw; right:15%; top:90%; color:white;}
+	}
 </style>
 
 </head>
